@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="saved_school_check_default" type="bool">TRUE</item>
+    <item name="saved_crime_check_default" type="bool">TRUE</item>
+    <item name="saved_traffic_check_default" type="bool">TRUE</item>
+    <item name="saved_blackspot_check_default" type="bool">TRUE</item>
+    <item name="saved_bike_check_default" type="bool">FALSE</item>
+</resources>

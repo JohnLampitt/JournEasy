@@ -25,7 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/logo"
         android:layout_centerHorizontal="true"
-        android:text="@string/radio_school" />
+        android:text="@string/radio_school"
+        android:onClick="schoolCheck" />
 
     <CheckBox
         android:id="@+id/crimeButton"
@@ -33,7 +34,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/schoolButton"
         android:layout_below="@+id/schoolButton"
-        android:text="@string/radio_crime" />
+        android:text="@string/radio_crime"
+        android:onClick="crimeCheck" />
 
     <CheckBox
         android:id="@+id/trafficButton"
@@ -41,7 +43,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/crimeButton"
         android:layout_below="@+id/crimeButton"
-        android:text="@string/radio_traffic" />
+        android:text="@string/radio_traffic"
+        android:onClick="trafficCheck" />
 
     <CheckBox
         android:id="@+id/blackspotButton"
@@ -49,7 +52,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/trafficButton"
         android:layout_below="@+id/trafficButton"
-        android:text="@string/radio_blackspot" />
+        android:text="@string/radio_blackspot"
+        android:onClick="blackspotCheck" />
 
     <CheckBox
         android:id="@+id/bikeButton"
@@ -57,6 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/blackspotButton"
         android:layout_below="@+id/blackspotButton"
-        android:text="@string/radio_bike" />
+        android:text="@string/radio_bike"
+        android:onClick="bikeCheck" />
 
 </RelativeLayout>
