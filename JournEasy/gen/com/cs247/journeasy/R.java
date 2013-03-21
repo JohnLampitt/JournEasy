@@ -46,31 +46,31 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int journeasylogo=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a000f;
-        public static final int bikeButton=0x7f0a000e;
-        public static final int blackspotButton=0x7f0a000d;
-        public static final int crimeButton=0x7f0a000b;
+        public static final int action_settings=0x7f0a000d;
+        public static final int bikeButton=0x7f0a000c;
+        public static final int blackspotButton=0x7f0a000b;
+        public static final int crimeButton=0x7f0a0009;
         public static final int destinationLocation=0x7f0a0002;
-        public static final int dummy_button=0x7f0a0009;
         public static final int fromText=0x7f0a0003;
-        public static final int fullscreen_content=0x7f0a0007;
-        public static final int fullscreen_content_controls=0x7f0a0008;
         public static final int getMeButton=0x7f0a0006;
         public static final int logo=0x7f0a0000;
-        public static final int schoolButton=0x7f0a000a;
+        public static final int map=0x7f0a0007;
+        public static final int schoolButton=0x7f0a0008;
         public static final int settingsButton=0x7f0a0005;
         public static final int startLocation=0x7f0a0001;
         public static final int toText=0x7f0a0004;
-        public static final int trafficButton=0x7f0a000c;
+        public static final int trafficButton=0x7f0a000a;
     }
     public static final class layout {
         public static final int activity_main_menu=0x7f030000;
-        public static final int activity_map=0x7f030001;
+        public static final int activity_map_view=0x7f030001;
         public static final int activity_settings=0x7f030002;
     }
     public static final class menu {
         public static final int main_menu=0x7f090000;
-        public static final int settings=0x7f090001;
+        public static final int map=0x7f090001;
+        public static final int map_view=0x7f090002;
+        public static final int settings=0x7f090003;
     }
     public static final class string {
         public static final int action_settings=0x7f070005;
@@ -82,6 +82,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int get_me=0x7f070007;
         public static final int hello_world=0x7f070006;
         public static final int logo=0x7f070009;
+        public static final int mapQuest_Key=0x7f07001a;
         public static final int preference_file_key=0x7f070014;
         public static final int radio_bike=0x7f070012;
         public static final int radio_blackspot=0x7f070011;

@@ -26,10 +26,10 @@ public class MainMenu extends Activity {
     
     /** Called when the user clicks the Get me there! button */
     public void sendMessagesToMap(View view) {
-        Intent intent = new Intent(this, MapActivity.class);
-        EditText editText = (EditText) findViewById(R.id.startLocation);
+        Intent intent = new Intent(this, MapViewActivity.class);
+        /*EditText editText = (EditText) findViewById(R.id.startLocation);
         String message = editText.getText().toString();
-        intent.putExtra(LOCATION_MESSAGE, message);
+        intent.putExtra(LOCATION_MESSAGE, message);*/
         startActivity(intent);
     }
     

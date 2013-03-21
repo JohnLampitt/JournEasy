@@ -7,7 +7,10 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="17" />
-
+    
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+  	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>	
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -23,21 +26,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.cs247.journeasy.FullscreenActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_fullscreen"
-            android:theme="@style/FullscreenTheme" >
-        </activity>
-        <activity
             android:name="com.cs247.journeasy.SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
+        
         <activity
-            android:name="com.cs247.journeasy.MapActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_map"
-            android:theme="@style/FullscreenTheme" >
+            android:name="com.cs247.journeasy.MapViewActivity"
+            android:label="@string/title_activity_map" >
         </activity>
+        
     </application>
 
 </manifest>
+
+
+
