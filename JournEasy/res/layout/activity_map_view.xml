@@ -15,4 +15,5 @@
     	android:clickable="true"
    		android:apiKey="@string/mapQuest_Key"
   />
+
 </RelativeLayout>

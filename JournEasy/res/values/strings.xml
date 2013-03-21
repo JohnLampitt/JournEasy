@@ -27,5 +27,7 @@
     <string name="saved_traffic_check">saved_traffic_check</string>
     <string name="saved_blackspot_check">saved_blackspot_check</string>
     <string name="saved_bike_check">saved_bike_check</string>
-    <string name="mapQuest_Key">Fmjtd%7Cluub2l07nh%2Ca2%3Do5&#8211;96ysd6</string>
+    <string name="mapQuest_Key">Fmjtd%7Cluub2l07nh%2Ca2%3Do5-96ysd6</string>
+    <string name="saved_start_location">start_location</string>
+    <string name="saved_end_location">end_location</string>
 </resources>

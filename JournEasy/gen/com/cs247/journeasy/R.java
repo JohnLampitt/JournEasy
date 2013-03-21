@@ -92,7 +92,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int saved_bike_check=0x7f070019;
         public static final int saved_blackspot_check=0x7f070018;
         public static final int saved_crime_check=0x7f070016;
+        public static final int saved_end_location=0x7f07001c;
         public static final int saved_school_check=0x7f070015;
+        public static final int saved_start_location=0x7f07001b;
         public static final int saved_traffic_check=0x7f070017;
         public static final int settings=0x7f070008;
         public static final int start_loc=0x7f070001;
