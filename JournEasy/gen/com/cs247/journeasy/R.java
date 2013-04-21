@@ -53,11 +53,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int destinationLocation=0x7f0a0002;
         public static final int fromText=0x7f0a0003;
         public static final int getMeButton=0x7f0a0006;
-        public static final int logo=0x7f0a0000;
+        public static final int logo=0x7f0a0001;
         public static final int map=0x7f0a0007;
         public static final int schoolButton=0x7f0a0008;
         public static final int settingsButton=0x7f0a0005;
-        public static final int startLocation=0x7f0a0001;
+        public static final int startLocation=0x7f0a0000;
         public static final int toText=0x7f0a0004;
         public static final int trafficButton=0x7f0a000a;
     }

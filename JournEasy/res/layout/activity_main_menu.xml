@@ -8,23 +8,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainMenu" >
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
-        android:src="@drawable/journeasylogo" 
-        android:contentDescription="@string/logo"/>
-
     <EditText
         android:id="@+id/startLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/logo"
+        android:layout_below="@+id/logo"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="55dp"
         android:ems="10"
         android:hint="@string/start_loc" >
 
@@ -35,7 +24,7 @@
         android:id="@+id/destinationLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/logo"
+        android:layout_below="@+id/startLocation"
         android:layout_alignLeft="@+id/startLocation"
         android:ems="10"
         android:hint="@string/dest_loc" >
@@ -75,9 +64,19 @@
         android:id="@+id/getMeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toText"
+        android:layout_below="@+id/destinationLocation"
         android:layout_centerHorizontal="true"
         android:text="@string/get_me"
         android:onClick="sendMessagesToMap" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/logo"
+        android:src="@drawable/journeasylogo" 
+        android:adjustViewBounds = "true"/>
 
 </RelativeLayout>
