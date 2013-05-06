@@ -23,6 +23,8 @@ import com.mapquest.android.maps.RouteManager;
 import com.mapquest.android.maps.RouteResponse;
 import com.mapquest.android.maps.RouteResponse.Location;
 import com.mapquest.android.maps.RouteResponse.Route;
+import com.mapquest.android.maps.RouteResponse.Route.Leg;
+import com.mapquest.android.maps.RouteResponse.Route.Leg.Maneuver;
 import com.mapquest.android.maps.ServiceResponse.Info;
 
 public class MapViewActivity extends MapActivity {
@@ -41,21 +43,74 @@ public class MapViewActivity extends MapActivity {
 		startLocation = "{street:'" + startLocation + "', city:'London', country:'gb'}";
 		endLocation = "{street:'" + endLocation + "', city:'London', country:'gb'}";
 		
-		List<Address> testAvoidLocations = new ArrayList<Address>();
-		LocationDownloadTask task = new LocationDownloadTask(MapViewActivity.this);
-		task.execute("{street:'euston road', city:'London', country:'gb'}"); 
+		//geocode start location
+		List<Address> possibleStart = new ArrayList<Address>();
+		LocationDownloadTask geoTask1 = new LocationDownloadTask(MapViewActivity.this);
+		geoTask1.execute(startLocation); 
 		try {
-			testAvoidLocations = task.get();
+			possibleStart = geoTask1.get();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} catch (ExecutionException e) {
 			e.printStackTrace();
 		}
-		if(testAvoidLocations.get(0).getExtras() == null) {
-			Log.w("TEST LOG", testAvoidLocations.get(0).toString());
+		//geocode end location
+		List<Address> possibleEnd = new ArrayList<Address>();
+		LocationDownloadTask geoTask2 = new LocationDownloadTask(MapViewActivity.this);
+		geoTask2.execute(endLocation); 
+		try {
+			possibleEnd = geoTask2.get();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			e.printStackTrace();
 		}
 		
-
+		//get closest station to start point
+		StationDownloadTask stationTask = new StationDownloadTask(MapViewActivity.this);
+		String lat = String.valueOf(possibleStart.get(0).getLatitude());
+		String longi = String.valueOf(possibleStart.get(0).getLongitude());
+		ArrayList<String> returnInfo = null;
+		stationTask.execute(lat,longi,"1"); 
+		try {
+			returnInfo = stationTask.get();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		}
+		//Store start Location
+		String startStation = "{latLng:{ lat:" + returnInfo.get(0) + ",lng:" + returnInfo.get(1) + "}}";
+		
+		//get closest station to end point
+		StationDownloadTask stationTask2 = new StationDownloadTask(MapViewActivity.this);
+		lat = String.valueOf(possibleEnd.get(0).getLatitude());
+		longi = String.valueOf(possibleEnd.get(0).getLongitude());
+		returnInfo = null;
+		stationTask2.execute(lat,longi,"0"); 
+		try {
+			returnInfo = stationTask2.get();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		}
+		//store end station
+		String endStation = "{latLng:{ lat:" + returnInfo.get(0) + ",lng:" + returnInfo.get(1) + "}}";
+		
+		//Get locations to avoid and store in arraylist
+		AvoidDownloadTask task = new AvoidDownloadTask(MapViewActivity.this);
+		task.execute("moderate");
+		ArrayList<String> avoidLoc = null;
+		try {
+			avoidLoc = task.get();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		}
+		
+		//Start new route for our route manager
     	RouteManager routeManager = new RouteManager(this);
     	String avoidRoadString = "{tryAvoidLinkIds:[111111, 012231], routeType:'bicycle'}";
     	routeManager.setOptions(avoidRoadString);
@@ -79,12 +134,23 @@ public class MapViewActivity extends MapActivity {
 			public void onSuccess(RouteResponse routeResponse) {  	
 				Route route = routeResponse.route;
 				List<Location> ids = route.locations;
+				int test = routeResponse.route.legs.get(0).maneuvers.size();
+				for(Leg leg : route.legs)
+				{
+					for(Maneuver man : leg.maneuvers)
+					{
+						for(String street : man.streets)
+						{
+							Log.w("Streets", street);
+						}
+					}
+				}
+				Log.w("Count of steps", Integer.toString(test));
 				Log.w("TEST LOG", Integer.toString(ids.get(0).linkId));
 				
 			}
 		});
-    	routeManager.createRoute(startLocation, endLocation);
-
+    	routeManager.createRoute(startStation, endStation);
 	}
 
 	@Override
