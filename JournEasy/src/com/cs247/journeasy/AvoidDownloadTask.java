@@ -22,15 +22,16 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.mapquest.android.Geocoder;
+import com.mapquest.android.maps.GeoPoint;
 
-public class AvoidDownloadTask extends AsyncTask<String, Void, ArrayList<String>> {
+public class AvoidDownloadTask extends AsyncTask<String, Void, ArrayList<GeoPoint>> {
 	private Context context;
 	
 	public AvoidDownloadTask(Context callerContext) {
 		context = callerContext;
 	}
 	@Override
-	protected ArrayList<String> doInBackground(String... sev) {
+	protected ArrayList<GeoPoint> doInBackground(String... sev) {
 		
         try{
             HttpClient http = new DefaultHttpClient();
@@ -50,12 +51,20 @@ public class AvoidDownloadTask extends AsyncTask<String, Void, ArrayList<String>
             //JSONObject json = new JSONObject(output);
             //JSONArray array = new JSONArray(json);
             JSONArray json = new JSONArray(output);
-            ArrayList<String> returnList = new ArrayList<String>();
+            ArrayList<GeoPoint> geoList = new ArrayList<GeoPoint>();
+            ArrayList<String> stringList = new ArrayList<String>();
+            ArrayList combinedList = new ArrayList();
+            combinedList.add(geoList);
+            combinedList.add(stringList);
             for(int i = 0; i < json.length(); i++) {
             	JSONObject tempVal = json.getJSONObject(i);
-            	returnList.add(tempVal.getString("location"));
+            	//returnList.add(tempVal.getString("location"));    
+            	String info = tempVal.getString("Info");
+            	stringList.add(info);
+            	geoList.add(new GeoPoint(tempVal.getDouble("Latitude"),tempVal.getDouble("Longitude")));
             }
-            return returnList;
+            Log.w("AVOID DL TASK", "Finished dl task");
+            return combinedList;
         }
         catch(Exception e)
         {

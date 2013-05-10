@@ -55,13 +55,15 @@ public class StationDownloadTask extends AsyncTask<String, Void, ArrayList<Strin
             String latitude =json.getString("Latitude");
             String longitude =json.getString("Longitude");
             String bikes =json.getString("Bikes");
-            String slots =json.getString("Slots");   
+            String slots =json.getString("Slots"); 
+            String name =json.getString("Name");
             Log.w("BIKE STATION DL", "Using Bike at " + latitude + " , " + longitude + " From org: " + info[0] + "," + info[1]);
             ArrayList<String> returnList = new ArrayList<String>();
             returnList.add(latitude);
             returnList.add(longitude);
             returnList.add(bikes);
             returnList.add(slots);
+            returnList.add(name);
   
             return returnList;
         }
