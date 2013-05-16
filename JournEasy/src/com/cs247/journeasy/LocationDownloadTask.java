@@ -19,19 +19,18 @@ public class LocationDownloadTask extends AsyncTask<String, Void, List<Address>>
 	protected List<Address> doInBackground(String... locations) {
 		Geocoder geocoder = new Geocoder(context, context.getString(R.string.mapQuest_Key));
 		List<Address> addresses = null;
-		for(String location: locations) {
-			try {
-				addresses = geocoder.getFromLocationName(location, 6);
-			} catch (IllegalArgumentException e) {
-				e.printStackTrace();
-				return null;
-			} catch (IOException e) {
-				e.printStackTrace();
-				return null;
-			}
+
+		
+		try {
+			addresses = geocoder.getFromLocationName(locations[0], -1);
+		} catch (IllegalArgumentException e) {
+			Log.e("LocationDownloadTask", "failed");
+			e.printStackTrace();
+		} catch (IOException e) {
+			Log.e("LocationDownloadTask", "failed");
+			e.printStackTrace();
 		}
-		Log.w("TEST LOG", "finished correctly");
-		Log.w("TEST LOG", "size:" + addresses.size());
+		Log.i("LocationDownloadTask", "finished correctly");
 		return addresses;
 	}
 

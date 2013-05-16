@@ -57,7 +57,6 @@ public class StationDownloadTask extends AsyncTask<String, Void, ArrayList<Strin
             String bikes =json.getString("Bikes");
             String slots =json.getString("Slots"); 
             String name =json.getString("Name");
-            Log.w("BIKE STATION DL", "Using Bike at " + latitude + " , " + longitude + " From org: " + info[0] + "," + info[1]);
             ArrayList<String> returnList = new ArrayList<String>();
             returnList.add(latitude);
             returnList.add(longitude);
@@ -65,6 +64,7 @@ public class StationDownloadTask extends AsyncTask<String, Void, ArrayList<Strin
             returnList.add(slots);
             returnList.add(name);
   
+            Log.i("Station DL task", "Finished Correctly");
             return returnList;
         }
         catch(Exception e)

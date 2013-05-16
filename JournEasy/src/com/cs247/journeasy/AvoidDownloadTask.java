@@ -35,7 +35,7 @@ public class AvoidDownloadTask extends AsyncTask<String, Void, ArrayList<GeoPoin
 		
         try{
             HttpClient http = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://joshua.dcs.warwick.ac.uk:8026/getTraffic.php?sev=Moderate");
+            HttpPost httpPost = new HttpPost("http://joshua.dcs.warwick.ac.uk:8026/getTraffic.php");
             HttpResponse response = http.execute(httpPost);
             HttpEntity entity = response.getEntity();
             InputStream input = entity.getContent();
@@ -48,8 +48,6 @@ public class AvoidDownloadTask extends AsyncTask<String, Void, ArrayList<GeoPoin
             	line = read.readLine();
             }
             String output = builder.toString();
-            //JSONObject json = new JSONObject(output);
-            //JSONArray array = new JSONArray(json);
             JSONArray json = new JSONArray(output);
             ArrayList<GeoPoint> geoList = new ArrayList<GeoPoint>();
             ArrayList<String> stringList = new ArrayList<String>();
@@ -58,17 +56,16 @@ public class AvoidDownloadTask extends AsyncTask<String, Void, ArrayList<GeoPoin
             combinedList.add(stringList);
             for(int i = 0; i < json.length(); i++) {
             	JSONObject tempVal = json.getJSONObject(i);
-            	//returnList.add(tempVal.getString("location"));    
             	String info = tempVal.getString("Info");
             	stringList.add(info);
             	geoList.add(new GeoPoint(tempVal.getDouble("Latitude"),tempVal.getDouble("Longitude")));
             }
-            Log.w("AVOID DL TASK", "Finished dl task");
+            Log.i("AVOID DL TASK", "Finished dl task");
             return combinedList;
         }
         catch(Exception e)
         {
-        	Log.w("FailedAvoidDownloadTask",e.getMessage());
+        	Log.e("FailedAvoidDownloadTask",e.getMessage());
         	return null;
         }
 	}            
