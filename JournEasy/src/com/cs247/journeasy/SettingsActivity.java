@@ -78,9 +78,7 @@ public class SettingsActivity extends Activity {
     /** Sets up checkboxs to their corresponding value in memory */
     public void setCheckboxes() {
 		CheckBox schoolCheckBox = (CheckBox) findViewById(R.id.schoolButton);
-		CheckBox crimeCheckBox = (CheckBox) findViewById(R.id.crimeButton);
 		CheckBox trafficCheckBox = (CheckBox) findViewById(R.id.trafficButton);
-		CheckBox blackspotCheckBox = (CheckBox) findViewById(R.id.blackspotButton);
 		CheckBox bikeCheckBox = (CheckBox) findViewById(R.id.bikeButton);
 
 		SharedPreferences sharedPref = this.getSharedPreferences(
@@ -89,18 +87,10 @@ public class SettingsActivity extends Activity {
 		boolean defSchoolCheckVal = getResources().getBoolean(R.bool.saved_school_check_default);
 		boolean schoolCheckVal = sharedPref.getBoolean(getString(R.string.saved_school_check), defSchoolCheckVal);
 		schoolCheckBox.setChecked(schoolCheckVal);
-
-		boolean defCrimeCheckVal = getResources().getBoolean(R.bool.saved_crime_check_default);
-		boolean crimeCheckVal = sharedPref.getBoolean(getString(R.string.saved_crime_check), defCrimeCheckVal);
-		crimeCheckBox.setChecked(crimeCheckVal);
 		
 		boolean defTrafficCheckVal = getResources().getBoolean(R.bool.saved_traffic_check_default);
 		boolean trafficCheckVal = sharedPref.getBoolean(getString(R.string.saved_traffic_check), defTrafficCheckVal);
 		trafficCheckBox.setChecked(trafficCheckVal);
-		
-		boolean defBlackCheckVal = getResources().getBoolean(R.bool.saved_blackspot_check_default);
-		boolean blackCheckVal = sharedPref.getBoolean(getString(R.string.saved_blackspot_check), defBlackCheckVal);
-		blackspotCheckBox.setChecked(blackCheckVal);
 		
 		boolean defBikeCheckVal = getResources().getBoolean(R.bool.saved_bike_check_default);
 		boolean bikeCheckVal = sharedPref.getBoolean(getString(R.string.saved_bike_check), defBikeCheckVal);

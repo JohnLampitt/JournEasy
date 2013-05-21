@@ -52,7 +52,6 @@ public class MapViewActivity extends MapActivity {
 	AnnotationView annotation;
 	AnnotationView trafficAnnotation;
     private DefaultItemizedOverlay trafficOverlay;
-    private DefaultItemizedOverlay schoolOverlay;
     private RelativeLayout innerView;
     private RelativeLayout innerView2;
     public int pos;
@@ -65,7 +64,7 @@ public class MapViewActivity extends MapActivity {
 		annotation = new AnnotationView(map);
 		trafficAnnotation = new AnnotationView(map);
 		trafficOverlay = new DefaultItemizedOverlay(getResources().getDrawable(R.drawable.traffic));
-		schoolOverlay = new DefaultItemizedOverlay(getResources().getDrawable(R.drawable.school));
+		
 		String options = new String();
 		
 		//Get settings values, if not set use the default value;
@@ -313,6 +312,8 @@ public class MapViewActivity extends MapActivity {
 	}
 	
 	private void avoidSchools() {
+		Drawable schoolIm = getResources().getDrawable(R.drawable.school);
+		final DefaultItemizedOverlay schoolOverlay = new DefaultItemizedOverlay(schoolIm);
 		//Get locations to avoid and store in arraylist
 		SchoolDownloadTask task = new SchoolDownloadTask(MapViewActivity.this);
 		task.execute();
