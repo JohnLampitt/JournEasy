@@ -121,7 +121,15 @@ public class MapViewActivity extends MapActivity {
 		
 		//If avoiding traffic then place on map and set route avoidance
 		if(trafficCheckVal) {
-			options = avoidTraffic().toString();
+			try {
+				options = avoidTraffic().put("routeType","bicycle").toString();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else {
+			options = "{routeType:bicycle}";
 		}
 		
 		//If avoiding schools mark them and avoid
@@ -365,6 +373,7 @@ public class MapViewActivity extends MapActivity {
         walkPaint.setStrokeWidth(8);
     	walk.setRouteRibbonPaint(walkPaint);
     	walk.setMapView(map);
+    	walk.setOptions("{routeType:pedestrian}");
     	walk.createRoute(location, station);
 	}
 	
